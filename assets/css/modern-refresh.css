@@ -4,3 +4,272 @@ html{scroll-behavior:smooth}body{background-color:var(--bg-dark,var(--remal-v4-b
 @media(max-width:900px){.spa-logo-img,.spa-detail-logo,.receipt-logo-compact{max-width:100%;height:auto;object-fit:contain}table{max-width:100%}}
 @media(max-width:640px){html{-webkit-text-size-adjust:100%}body{overflow-x:hidden}input,select,textarea,button{touch-action:manipulation}input,select,textarea{font-size:16px}.spa-logo-img,.spa-detail-logo{max-height:56px}.receipt-logo-compact{max-height:44px}.modal,[role=dialog]{max-width:100vw}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* V4 visual pass — présentation uniquement. Palette Remal conservée. */
+:root {
+  --remal-v4-bg: #0f0e0c;
+  --remal-v4-surface: #181614;
+  --remal-v4-surface-2: #211e1a;
+  --remal-v4-gold: #DCA773;
+  --remal-v4-border: #2f2820;
+  --remal-v4-text: #f3f4f6;
+  --remal-v4-muted: #a8a29e;
+  --remal-v4-radius: 16px;
+  --remal-v4-shadow: 0 12px 32px rgba(0,0,0,.22);
+}
+
+/* Navigation principale : plus nette, sans changer les entrées ni leurs actions */
+.app-sidebar {
+  background: #181614;
+  border-right: 1px solid #2f2820;
+  padding: 14px 10px 18px;
+  box-shadow: 12px 0 32px rgba(0,0,0,.18);
+}
+.app-sidebar > div:first-child {
+  padding: 14px 14px 22px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #2f2820;
+}
+.sidebar-link {
+  min-height: 44px;
+  padding: 11px 14px;
+  margin: 3px 8px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  letter-spacing: .01em;
+}
+.sidebar-link:hover {
+  transform: translateX(2px);
+  background: #211e1a;
+  border-color: #3b3025;
+}
+.sidebar-link.active {
+  background: linear-gradient(100deg, rgba(220,167,115,.18), rgba(220,167,115,.06));
+  border-color: rgba(220,167,115,.48);
+  color: #DCA773;
+  box-shadow: inset 3px 0 0 #DCA773;
+}
+.sidebar-link.active i { color: #DCA773; }
+
+/* Barre supérieure et espace de travail */
+.app-topbar {
+  min-height: 70px;
+  border-bottom-color: #2f2820;
+  background: rgba(24,22,20,.96);
+  padding-inline: clamp(16px, 2.4vw, 34px);
+}
+.app-content {
+  padding: clamp(16px, 2.5vw, 34px);
+  background:
+    radial-gradient(ellipse at 85% 0%, rgba(220,167,115,.035), transparent 36%),
+    #0f0e0c;
+}
+.app-content > section,
+.app-content > div[id^="section"] {
+  width: 100%;
+}
+.app-content .max-w-6xl,
+.app-content .max-w-7xl {
+  max-width: 1440px;
+}
+
+/* Cartes et formulaires existants : hiérarchie visuelle plus calme */
+.remal-card,
+.dashboard-kpi-card,
+.dashboard-chart-card,
+.dashboard-top-card {
+  border-radius: 16px;
+  border-color: #2f2820;
+  box-shadow: 0 8px 24px rgba(0,0,0,.16);
+}
+.remal-card {
+  background-color: #181614;
+}
+.remal-input,
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+select,
+textarea {
+  border-radius: 10px;
+}
+.remal-input:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #DCA773 !important;
+  box-shadow: 0 0 0 3px rgba(220,167,115,.12);
+}
+button {
+  border-radius: 10px;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #DCA773 !important;
+  outline-offset: 3px;
+}
+
+/* Tableau de bord : reprend exclusivement les cartes et indicateurs déjà présents */
+.dashboard-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #2f2820;
+}
+.dashboard-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.dashboard-filter-btn {
+  min-height: 38px;
+  padding: 8px 14px;
+  border: 1px solid #2f2820;
+  background: #0f0e0c;
+  color: #a8a29e;
+}
+.dashboard-filter-btn:hover,
+.dashboard-filter-btn.active {
+  color: #DCA773;
+  border-color: rgba(220,167,115,.6);
+  background: rgba(220,167,115,.09);
+}
+.dashboard-kpi-grid {
+  gap: 14px;
+}
+.dashboard-kpi-card {
+  padding: 20px;
+  background: linear-gradient(145deg, #1b1916, #181614);
+  border: 1px solid #2f2820;
+  transition: border-color .18s ease, transform .18s ease;
+}
+.dashboard-kpi-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(220,167,115,.48);
+}
+.dashboard-kpi-label {
+  color: #a8a29e;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: .09em;
+}
+.dashboard-kpi-value {
+  color: #DCA773;
+  font-size: clamp(22px, 2vw, 30px);
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+.dashboard-kpi-value.blue,
+.dashboard-kpi-value.green,
+.dashboard-kpi-value.purple {
+  color: #DCA773;
+}
+.dashboard-chart-card,
+.dashboard-top-card {
+  padding: 20px;
+  background: #181614;
+}
+.dashboard-chart-title {
+  color: #e7d4c0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.dashboard-chart-wrap {
+  min-width: 0;
+}
+.dashboard-report-btn {
+  border: 1px solid rgba(220,167,115,.55);
+}
+
+/* Tables, historique et résultats de saisie */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+thead th {
+  color: #DCA773;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+tbody tr { transition: background-color .15s ease; }
+tbody tr:hover { background-color: rgba(220,167,115,.045); }
+#massPreviewContainer {
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+}
+#massPreviewContainer table { min-width: 620px; }
+
+/* Le logo original reste visible et proportionné sur les deux interfaces */
+.app-sidebar img,
+.app-topbar img,
+.mobile-topbar img {
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.app-sidebar img { max-height: 46px; }
+.app-topbar img { max-height: 38px; }
+
+/* Adaptation ordinateur portable / tablette */
+@media (min-width: 1025px) {
+  .app-sidebar {
+    width: 264px;
+    transform: translateX(0);
+  }
+  .app-main {
+    margin-left: 264px;
+    width: calc(100% - 264px);
+  }
+  .app-content { padding: 28px clamp(22px, 2.4vw, 38px); }
+}
+
+/* Interface staff : ergonomie téléphone, sans ajouter de fonctions */
+@media (max-width: 1024px) {
+  .app-content { padding: 16px !important; }
+  .remal-card { border-radius: 14px; }
+  .dashboard-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .mobile-topbar { min-height: 60px; }
+  .mobile-topbar h1 { letter-spacing: .12em; }
+  .app-content { padding: 14px !important; padding-bottom: 32px !important; }
+  .dashboard-title { align-items: flex-start; }
+  .dashboard-filter-bar { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dashboard-filter-btn { width: 100%; padding-inline: 8px; }
+  .dashboard-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .dashboard-kpi-card { padding: 14px; }
+  .dashboard-kpi-value { font-size: 21px; }
+  .dashboard-chart-card,
+  .dashboard-top-card { padding: 14px; }
+  .quick-actions-grid { gap: 10px; }
+  .quick-action-card { min-width: 0; }
+  #massPreviewContainer { -webkit-overflow-scrolling: touch; }
+}
+
+/* Respect du mode clair déjà présent dans l'application */
+body.light-mode .app-sidebar { background: #fff !important; border-right-color: #e2e8f0 !important; }
+body.light-mode .sidebar-link { color: #475569; }
+body.light-mode .sidebar-link.active {
+  color: #b47a3e !important;
+  background: #fef3c7 !important;
+  border-color: #f3d6a8 !important;
+  box-shadow: inset 3px 0 0 #b47a3e;
+}
+body.light-mode .app-content { background: #f8fafc !important; }
+body.light-mode .dashboard-kpi-card,
+body.light-mode .dashboard-chart-card,
+body.light-mode .dashboard-top-card { background: #fff !important; border-color: #e2e8f0 !important; }
+body.light-mode .dashboard-kpi-label { color: #64748b; }
+body.light-mode .dashboard-chart-title { color: #92400e; }
+body.light-mode .dashboard-filter-btn { background: #fff; color: #475569; border-color: #e2e8f0; }
+body.light-mode .dashboard-filter-btn.active { color: #92400e; background: #fef3c7; border-color: #f3d6a8; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-link, .dashboard-kpi-card, button { transition: none !important; }
+}
